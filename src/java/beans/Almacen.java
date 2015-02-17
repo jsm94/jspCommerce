@@ -23,8 +23,16 @@ public class Almacen {
         try {
             con = BD.conectar();
             Statement stm = con.createStatement();
-            String sql = "";
+            String sql = "SELECT * FROM Productos;";
             ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                Producto pro = new Producto();
+                pro.setId(rs.getInt("idProducto"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setPrecio(rs.getDouble("precio"));
+                productos.add(pro);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
