@@ -15,6 +15,7 @@ class Producto {
     private String nombre;
     private String descripcion;
     private Double precio;
+    private String imagen;
 
     public Integer getId() {
         return id;
@@ -47,6 +48,13 @@ class Producto {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
-    
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
     
 }

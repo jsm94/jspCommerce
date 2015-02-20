@@ -31,6 +31,7 @@ public class Almacen {
                 pro.setNombre(rs.getString("nombre"));
                 pro.setDescripcion(rs.getString("descripcion"));
                 pro.setPrecio(rs.getDouble("precio"));
+                pro.setImagen(rs.getString("imagen"));
                 productos.add(pro);
             }
         } catch (SQLException ex) {
