@@ -20,6 +20,7 @@ public class Almacen {
 
     public ArrayList<Producto> getProductos() {
         Connection con = null;
+        productos = new ArrayList<>();
         try {
             con = BD.conectar();
             Statement stm = con.createStatement();
@@ -34,9 +35,12 @@ public class Almacen {
                 pro.setImagen(rs.getString("imagen"));
                 productos.add(pro);
             }
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
         return productos;
     }
+    
+    
 }

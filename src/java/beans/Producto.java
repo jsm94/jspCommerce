@@ -10,7 +10,7 @@ package beans;
  * 
  * @author Juan Antonio Seco Merchán
  */
-class Producto {
+public class Producto {
     private Integer id;
     private String nombre;
     private String descripcion;
@@ -56,5 +56,7 @@ class Producto {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+    
+    
     
 }
