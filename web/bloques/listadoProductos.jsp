@@ -1,19 +1,55 @@
 <%-- 
     Document   : listadoProductos
     Created on : 20-feb-2015, 12:27:55
-    Author     : Sammy Guergachi <sguergachi at gmail.com>
+    Author     : Juan Antonio Seco Merchán
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setBundle  var="bundle" basename="bundles.listadoProductos"/>
 <jsp:useBean  id="almacen" class="beans.Almacen" />
-<div class="col-md-12">
-    <c:forEach var="i" items="${almacen.productos}">
-        <jsp:useBean  id="producto" class="beans.Producto" />
-        <jsp:setProperty name="producto" property="nombre" value="${i.nombre}" />
-        <jsp:setProperty name="producto" property="descripcion" value="${i.descripcion}" />
-        <jsp:setProperty name="producto" property="precio" value="${i.precio}" />
-        <jsp:setProperty name="producto" property="imagen" value="${i.imagen}" />
-        <c:out value="${producto.nombre}" />
-        ${producto.descripcion}
-        <img alt="" src="imagenes/productos/${producto.imagen}"/>
-    </c:forEach>
+<%-- Búsqueda de productos --%>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <form action="index.jsp">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="<fmt:message key="placeholderSearch" bundle="${bundle}" />" name="nameCar" required>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><fmt:message key="buscar" bundle="${bundle}" /></button>
+            </span>
+        </div><!-- /input-group -->
+    </form>
+</div><!-- /.col-lg-6 -->
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <c:set var="listaProductos" value="${almacen.productos}" />
+        <c:if test="${not empty nameCar}">
+            <c:set var="listaProductos" value="${almacen.productosByName(nameCar)}" />
+        </c:if>
+        <c:forEach var="i" items="${almacen.productos}">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+
+                <%-- Declaramos el bean de producto y aplicamos sus propiedades --%>
+                <jsp:useBean  id="producto" class="beans.Producto" />
+                <jsp:setProperty name="producto" property="nombre" value="${i.nombre}" />
+                <jsp:setProperty name="producto" property="descripcion" value="${i.descripcion}" />
+                <jsp:setProperty name="producto" property="precio" value="${i.precio}" />
+                <jsp:setProperty name="producto" property="imagen" value="${i.imagen}" />
+
+                <%-- Construimos la vista de productos --%>
+                <div class="col-md-12 miniatura-producto">
+                    <p class="nombre-producto"><c:out value="${producto.nombre}" /></p>
+                    <div class="wrapper-imagen-producto">
+                        <img src="imagenes/productos/${producto.imagen}" alt="Imagen del vehículo ${producto.nombre}" class="img-responsive">
+                    </div>
+                    <%-- Recortamos texto de descripción --%>
+                    <c:set var="shortDesc" value="${fn:substring(producto.descripcion, 0, 32)}" /> 
+                    <p class="descripcion-producto"><c:out value="${shortDesc}..." /> <a href=""> <fmt:message key="verMas" bundle="${bundle}"/> ${producto.nombre}</a></p>
+                    <p class="precio-producto"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${producto.precio}" /></p>
+                    <div class="triangle"></div>
+                    <p class="icon-producto"><i class="fa fa-cart-plus"></i></p>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
 </div>

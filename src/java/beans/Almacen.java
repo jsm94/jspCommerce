@@ -42,5 +42,29 @@ public class Almacen {
         return productos;
     }
     
+    public ArrayList<Producto> getProductosByName(String name) {
+        Connection con = null;
+        productos = new ArrayList<>();
+        try {
+            con = BD.conectar();
+            Statement stm = con.createStatement();
+            String sql = "SELECT * FROM Productos WHERE nombre LIKE '%" + name + "%';";
+            ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                Producto pro = new Producto();
+                pro.setId(rs.getInt("idProducto"));
+                pro.setNombre(rs.getString("nombre"));
+                pro.setDescripcion(rs.getString("descripcion"));
+                pro.setPrecio(rs.getDouble("precio"));
+                pro.setImagen(rs.getString("imagen"));
+                productos.add(pro);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Almacen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return productos;
+    }
+    
     
 }

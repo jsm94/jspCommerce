@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="">
+<html lang="es">
     <jsp:include page="bloques/head.jsp"/>
 <body>
     <nav class="navbar" role="navigation">
@@ -23,7 +23,7 @@
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -36,9 +36,9 @@
             <h1>Hello, world!</h1>
                 <p class="lead">Now you can start your own project with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.2</a>. This plugin is a fork from <a href="https://github.com/le717/brackets-html-skeleton#readme">HTML Skeleton</a>.</p>
         </div>
+        <jsp:include page="bloques/listadoProductos.jsp" /> 
     </div>
     
-    <jsp:include page="bloques/listadoProductos.jsp" /> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
