@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="carrito" class="beans.dao.CarritoDaoImpl" scope="session"/>
 <!DOCTYPE html>
 <html lang="es">
     <jsp:include page="bloques/head.jsp"/>
@@ -33,7 +34,7 @@
 
     <div class="container">
         <div class="starter-template">
-            <h1>Hello, world!</h1>
+            <h1>Hello, world!${carrito}</h1>
                 <p class="lead">Now you can start your own project with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.2</a>. This plugin is a fork from <a href="https://github.com/le717/brackets-html-skeleton#readme">HTML Skeleton</a>.</p>
         </div>
         <jsp:include page="bloques/listadoProductos.jsp" /> 

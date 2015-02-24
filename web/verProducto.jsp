@@ -12,42 +12,81 @@
 <jsp:useBean  id="almacen" class="beans.Almacen" />
 <jsp:useBean  id="producto" class="beans.Producto" />
 <jsp:setProperty name="producto" property="id" value="${param.id}" />
+<c:set var="indice" value="${almacen.productos.indexOf(producto)}" />  <%-- Recogemos el indice del producto para devolverlo en la lista --%>
+<c:set var="productoFinal" value="${almacen.productos.get(indice)}" />
 <!DOCTYPE html>
 <html lang="es">
     <jsp:include page="bloques/head.jsp"/>
-<body>
-    <nav class="navbar" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">jspCommerce</a>
+    <style type="text/css">
+        .imagen-producto {
+            background-image: url(imagenes/productos/${productoFinal.imagen});
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 200px;
+            padding: 0;
+            -webkit-filter: blur(1px) grayscale(1);
+        }
+
+        .capa {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(imagenes/texture2.jpg);
+            opacity: 0.3;
+            -webkit-filter: blur(0.8px);
+        }
+    </style>
+    <body>
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">jspCommerce</a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--.nav-collapse -->
             </div>
+        </nav>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div><!--.nav-collapse -->
+        <div class="container-fluid titulo-vista-producto">
+            <div class="container">
+                <div class="col-md-12">
+                    <h1>${productoFinal.nombre}</h1>
+                </div>
+            </div>
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="starter-template">
-            <h1>${almacen.productos.indexOf(producto.id)}</h1>
-                <p class="lead">Now you can start your own project with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.2</a>. This plugin is a fork from <a href="https://github.com/le717/brackets-html-skeleton#readme">HTML Skeleton</a>.</p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 imagen-producto">
+                    <div class="capa"></div>
+                </div>
+            </div>
+            <div class="container contenido-vista-producto">
+                <div class="row">
+                    <div class="col-md-7">
+                        <p><c:out value="${productoFinal.descripcion}" /></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${productoFinal.precio}" /></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
 </html>
 

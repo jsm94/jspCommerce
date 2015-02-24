@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Carrito {
     private String nombreCliente;
     private String direccionCliente;
-    private ArrayList<LineaVenta> lineas;
+    private ArrayList<LineaVenta> lineas = new ArrayList<>();
     private LineaVenta nuevaLinea;
     private Double total;
 
@@ -36,6 +36,7 @@ public class Carrito {
 
     public void setNuevaLinea(LineaVenta nuevaLinea) {
         this.nuevaLinea = nuevaLinea;
+        lineas.add(nuevaLinea);
     }
 
     public Double getTotal() {

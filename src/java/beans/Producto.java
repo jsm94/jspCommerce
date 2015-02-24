@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package beans;
 
-import java.util.Comparator;
+import java.util.Objects;
 
 /**
- * 
+ *
  * @author Juan Antonio Seco Merchán
  */
-public class Producto implements Comparator<Producto>{
+public class Producto {
+
     private Integer id;
     private String nombre;
     private String descripcion;
@@ -64,12 +64,10 @@ public class Producto implements Comparator<Producto>{
         return nombre; //To change body of generated methods, choose Tools | Templates.
     }
 
-    public boolean equals(Producto obj) {
-        return this.id.equals(obj.id); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public boolean equals(Object obj) {
+        return id.equals(((Producto)obj).id); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int compare(Producto o1, Producto o2) {
-        return o1.id - o2.id ; //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
