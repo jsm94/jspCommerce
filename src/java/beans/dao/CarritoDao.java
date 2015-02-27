@@ -14,5 +14,6 @@ import beans.Producto;
 public interface CarritoDao {
     public void addProducto(Producto pro) ;
     public void remProducto(Producto pro);
+    public void guardarCompra(String nombreYApellidos, String direccion);
     public Double total();
 }

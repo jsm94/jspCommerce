@@ -6,15 +6,12 @@
 package servlets;
 
 import beans.Almacen;
-import beans.Carrito;
 import beans.Producto;
 import beans.dao.CarritoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-@WebServlet(name = "addProducto", urlPatterns = {"/addProducto"})
-public class addProducto extends HttpServlet {
+public class remProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,9 +34,9 @@ public class addProducto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/plain;charset=UTF-8");
         HttpSession sesion = request.getSession();
-
+        
         int idProducto = Integer.parseInt(request.getParameter("id-producto"));
         ArrayList<Producto> productos = new Almacen().getProductos();
         Producto producto = new Producto();
@@ -48,8 +44,8 @@ public class addProducto extends HttpServlet {
         int indice = productos.indexOf(producto);
         producto = productos.get(indice);
         CarritoDao carrito = (CarritoDao) sesion.getAttribute("carrito");
-        carrito.addProducto(producto);
-        response.sendRedirect("");
+        carrito.remProducto(producto);
+        response.sendRedirect("verCompra.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

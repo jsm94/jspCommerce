@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setBundle  var="bundle" basename="bundles.listadoProductos"/>
+<fmt:setBundle  var="bundle" basename="bundles.app"/>
 <jsp:useBean  id="almacen" class="beans.Almacen" />
 <jsp:useBean  id="producto" class="beans.Producto" />
 <jsp:setProperty name="producto" property="id" value="${param.id}" />
@@ -25,7 +25,8 @@
             background-size: cover;
             height: 200px;
             padding: 0;
-            -webkit-filter: blur(1px) grayscale(1);
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
         }
 
         .capa {
@@ -35,30 +36,12 @@
             background: url(imagenes/texture2.jpg);
             opacity: 0.3;
             -webkit-filter: blur(0.8px);
+            filter: blur(0.8px);
         }
     </style>
     <body>
-        <nav class="navbar" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">jspCommerce</a>
-                </div>
-
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div><!--.nav-collapse -->
-            </div>
-        </nav>
+        
+        <jsp:include page="bloques/navbar.jsp" />
 
         <div class="container-fluid titulo-vista-producto">
             <div class="container">

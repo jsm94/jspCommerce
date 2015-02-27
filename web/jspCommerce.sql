@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-02-2015 a las 14:24:39
+-- Tiempo de generación: 27-02-2015 a las 19:15:28
 -- Versión del servidor: 5.5.41-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.6
 
@@ -52,11 +52,18 @@ INSERT INTO `Productos` (`idProducto`, `descripcion`, `precio`, `nombre`, `image
 --
 
 CREATE TABLE IF NOT EXISTS `Ventas` (
-  `idVenta` int(11) NOT NULL AUTO_INCREMENT,
+  `idVenta` int(11) NOT NULL,
   `nombreCliente` varchar(40) NOT NULL,
   `direccionCliente` varchar(40) NOT NULL,
   PRIMARY KEY (`idVenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Ventas`
+--
+
+INSERT INTO `Ventas` (`idVenta`, `nombreCliente`, `direccionCliente`) VALUES
+(0, 'Sherlock Holmes', 'Baker St. 221');
 
 -- --------------------------------------------------------
 
@@ -69,10 +76,32 @@ CREATE TABLE IF NOT EXISTS `VentasProductos` (
   `lineaVenta` int(11) NOT NULL AUTO_INCREMENT,
   `idProducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `subtotal` decimal(6,2) NOT NULL,
+  `subtotal` decimal(20,2) NOT NULL,
   PRIMARY KEY (`lineaVenta`),
-  KEY `idVenta` (`idVenta`,`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `idVenta` (`idVenta`,`idProducto`),
+  KEY `idProducto` (`idProducto`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- Volcado de datos para la tabla `VentasProductos`
+--
+
+INSERT INTO `VentasProductos` (`idVenta`, `lineaVenta`, `idProducto`, `cantidad`, `subtotal`) VALUES
+(0, 10, 1, 6, 357419.94),
+(0, 11, 2, 2, 13198.00),
+(0, 12, 4, 4, 554403.60),
+(0, 13, 3, 1, 103955.99);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `VentasProductos`
+--
+ALTER TABLE `VentasProductos`
+  ADD CONSTRAINT `VentasProductos_ibfk_1` FOREIGN KEY (`idVenta`) REFERENCES `Ventas` (`idVenta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `VentasProductos_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `Productos` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Juan Antonio Seco Merchán
 */
 
+.wrapper {
+    /*margin-top: 20px;*/
+}
+
 .miniatura-producto {
     padding: 15px;
     box-shadow: 0px 2px 4px rgb(199, 199, 199);
@@ -18,7 +22,7 @@ and open the template in the editor.
 
 .miniatura-producto .nombre-producto {
     background: rgb(237, 237, 237);
-    margin: -12px -15px 0px -15px;
+    margin: -15px -15px 0px -15px;
     padding: 13px;
     color: rgb(140, 140, 140);
     font-size: 17px;
@@ -64,6 +68,15 @@ and open the template in the editor.
     position: absolute;
     bottom: -10px;
     left: 10px;
+    -webkit-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+.link-comprar:hover .icon-producto {
+    -ms-transform: rotate(-30deg); /* IE 9 */
+    -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
+    transform: rotate(-30deg);
 }
 
 .wrapper-imagen-producto {
@@ -75,6 +88,15 @@ and open the template in the editor.
 .miniatura-producto .img-responsive {
     margin-left: -15px;
     max-width: 120%;
+    -webkit-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+
+.miniatura-producto .img-responsive:hover {
+    margin-left: -35px;
+    margin-top: -15px;
+    max-width: 150%;
 }
 
 /* Contenido Vista Productos */
@@ -97,4 +119,118 @@ and open the template in the editor.
     background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
     color: rgb(219, 219, 219);
+}
+
+.lector {
+    visibility: hidden !important;
+    position: absolute !important;
+}
+
+/* Navbar */
+.navbar.gray {
+    background: rgba(168, 168, 168, 0.4);
+    border-radius: 0;
+    margin: 0;
+    border-bottom: 5px solid rgb(142, 127, 46);
+}
+
+.navbar.gray a {
+    color: rgba(148, 147, 129, 1);
+    text-shadow: 1px 1px 2px rgba(182, 182, 182, .25);
+}
+
+.navbar.gray .navbar-nav>li>a {
+    transition: .3s ease-in-out;
+}
+
+.listado-productos {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Carrito */
+.carrito-small {
+    text-align: right;
+    background: -moz-linear-gradient(left,  rgba(153,153,153,0) 15%, rgba(153,153,153,0.65) 40%, rgba(153,153,153,0.65) 60%, rgba(153,153,153,0) 85%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(15%,rgba(153,153,153,0)), color-stop(40%,rgba(153,153,153,0.65)), color-stop(60%,rgba(153,153,153,0.65)), color-stop(85%,rgba(153,153,153,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(153,153,153,0) 15%,rgba(153,153,153,0.65) 40%,rgba(153,153,153,0.65) 60%,rgba(153,153,153,0) 85%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(153,153,153,0) 15%,rgba(153,153,153,0.65) 40%,rgba(153,153,153,0.65) 60%,rgba(153,153,153,0) 85%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(153,153,153,0) 15%,rgba(153,153,153,0.65) 40%,rgba(153,153,153,0.65) 60%,rgba(153,153,153,0) 85%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(153,153,153,0) 15%,rgba(153,153,153,0.65) 40%,rgba(153,153,153,0.65) 60%,rgba(153,153,153,0) 85%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00999999', endColorstr='#00999999',GradientType=1 ); /* IE6-9 */
+    padding-top: 10px;
+    padding-top: 0px;
+}
+
+.carrito-small .precio-compra {
+    color: rgb(142, 127, 46);
+}
+
+.carrito-small .icono-compra {
+    color: rgb(142, 127, 46);
+    font-size: 25px;
+    margin-right: 10px
+}
+
+@media(max-width:767px){
+}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
+
+/* Botones */
+.btn.btn-golden {
+    text-shadow: 0 1px 0 rgb(224, 219, 192);
+    background-image: linear-gradient(to bottom,rgb(234, 228, 193) 0,rgb(176, 148, 0) 100%);
+    border-color: rgb(155, 140, 69);
+}
+
+.btn.btn-golden:hover {
+    text-shadow: 0 1px 0 rgb(224, 219, 192);
+    background-image: linear-gradient(to bottom,rgb(234, 228, 193) 0,rgb(144, 121, 2) 100%);
+    border-color: rgb(155, 140, 69);
+}
+
+a button {
+    color: #333
+}
+/* Tablas */
+
+tfoot tr, tfoot td, tfoot th {
+    border: 0 !important;
+}
+
+table.table th {
+    text-align: center
+}
+
+table.table td:nth-child(3){
+    text-align: right
+}
+
+table.table td:nth-child(4){
+    text-align: center;
+}
+
+table.table td:nth-child(4) a i{
+    color: #333
+}
+
+table.table td:nth-child(2) {
+    text-align: center
+}
+
+table.table tfoot td {
+    color:  #8E7F2E;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left !important
+}
+
+.align-right {
+    text-align: right
+}
+
+.align-center {
+    text-align: center
 }

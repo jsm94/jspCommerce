@@ -42,6 +42,11 @@ subtotal : double (lectura)
     }
 
     @Override
+    public String toString() {
+        return producto + " x" + cantidad + " : " + subTotal; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
     public boolean equals(Object obj) {
         return producto.getId().equals(((LineaVenta)obj).getProducto().getId()); //To change body of generated methods, choose Tools | Templates.
     }
