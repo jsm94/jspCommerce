@@ -16,4 +16,5 @@ public interface CarritoDao {
     public void remProducto(Producto pro);
     public void guardarCompra(String nombreYApellidos, String direccion);
     public Double total();
+    public void limpiar();
 }

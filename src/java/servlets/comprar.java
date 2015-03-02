@@ -5,12 +5,8 @@
  */
 package servlets;
 
-import beans.Almacen;
-import beans.Producto;
 import beans.dao.CarritoDao;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +37,8 @@ public class comprar extends HttpServlet {
         String direccion = request.getParameter("direccion");
         CarritoDao carrito = (CarritoDao) sesion.getAttribute("carrito");
         carrito.guardarCompra(nomApe, direccion);
-        response.sendRedirect("");
+        carrito.limpiar();
+        response.sendRedirect("final.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

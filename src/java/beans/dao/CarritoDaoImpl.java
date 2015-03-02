@@ -99,6 +99,11 @@ public class CarritoDaoImpl implements CarritoDao {
     }
 
     @Override
+    public void limpiar() {
+        carrito.getLineas().clear();
+    }
+    
+    @Override
     public String toString() {
         return "" + carrito.getLineas() + " = " + total();
     }

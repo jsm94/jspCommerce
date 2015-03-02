@@ -14,17 +14,17 @@
     <jsp:forward page="/index.jsp" />
 </c:if>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<fmt:message key="idioma" bundle="${bundle}"/>">
     <jsp:include page="bloques/head.jsp"/>
     <body>
 
         <jsp:include page="bloques/navbar.jsp" />
 
-        <div class="container-fluid">
+        <div class="container-fluid wrapper">
             <div class="container">
                 <h1><fmt:message key="realizarCompra" bundle="${bundle}"/></h1>
                 <form action="comprar" method="post">
-                    <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
+                    <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 formulario">
                         
                         <div class="form-group">
                             <label for="nombre"><fmt:message key="nombre" bundle="${bundle}"/></label>
@@ -42,7 +42,7 @@
                         </div>
                         
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <a href="verCompra.jsp"><button class="btn btn-default"><fmt:message key="atras" bundle="${bundle}"/></button></a>
+                            <a href="verCompra.jsp"><span class="btn btn-default"><fmt:message key="atras" bundle="${bundle}"/></span></a>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6 align-right">
                             <button type="submit" class="btn btn-golden"><fmt:message key="comprar" bundle="${bundle}"/></button>
@@ -52,8 +52,7 @@
             </div>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+                            <jsp:include page="bloques/footer.jsp" />
     </body>
 </html>
 

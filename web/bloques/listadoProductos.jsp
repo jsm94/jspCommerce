@@ -12,30 +12,32 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <form action="index.jsp">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="<fmt:message key="placeholderSearch" bundle="${bundle}" />" name="nameCar" required>
+            <label for="busqueda" class="lector"><fmt:message key="placeholderSearch" bundle="${bundle}" /></label>
+            <input type="text" id="busqueda" class="form-control search" placeholder="<fmt:message key="placeholderSearch" bundle="${bundle}" />" name="nameCar" required>
             <span class="input-group-btn">
-                <button class="btn btn-default" type="submit"><fmt:message key="buscar" bundle="${bundle}" /></button>
+                <button class="btn btn-search" type="submit"><fmt:message key="buscar" bundle="${bundle}" /></button>
             </span>
         </div><!-- /input-group -->
     </form>
 </div><!-- /.col-lg-6 -->
 
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12  listado-productos">
         <c:choose>
             <c:when test="${not empty param.nameCar}">
                 <c:set var="listaProductos" value="${almacen.getProductosByName(param.nameCar)}" />
-                <h2><fmt:message key="resultadosPor" bundle="${bundle}" /> "${param.nameCar}"</h2>
+                <h1><fmt:message key="resultadosPor" bundle="${bundle}" /> "${param.nameCar}"</h1>
                 <c:if test="${listaProductos.size() <= 0}">
                     <p><fmt:message key="noResultados" bundle="${bundle}" /></p>
                 </c:if>
             </c:when>
             <c:otherwise>
                 <c:set var="listaProductos" value="${almacen.productos}" />
+                <h1><fmt:message key="ultimosProductos" bundle="${bundle}" /></h1>
             </c:otherwise>
         </c:choose>
         <c:forEach var="i" items="${listaProductos}">
-            <div class="col-md-3 col-sm-4 col-xs-12 listado-productos">
+            <div class="col-md-3 col-sm-4 col-xs-12">
                 <%-- Declaramos el bean de producto y aplicamos sus propiedades --%>
                 <jsp:useBean  id="producto" class="beans.Producto" />
                 <jsp:setProperty name="producto" property="nombre" value="${i.nombre}" />
@@ -50,7 +52,8 @@
                     <a href="verProducto.jsp?id=${producto.id}">
                         <span class="lector"><fmt:message key="verMas" bundle="${bundle}"/> ${producto.nombre}</span>
                         <div class="wrapper-imagen-producto">
-                            <img src="imagenes/productos/${producto.imagen}" alt="<fmt:message key="imagenDe" bundle="${bundle}"/> ${producto.nombre}" class="img-responsive">
+                            <img src="imagenes/productos/${producto.imagen}" alt="<fmt:message key="imagenDe" bundle="${bundle}"/> ${producto.nombre}" 
+                                 longdesc="http://localhost:8080/jspCommerce/verProducto.jsp?id=${producto.id}#descripcion-producto" class="img-responsive">
                         </div>
                     </a>
                     <%-- Recortamos texto de descripción --%>
@@ -60,7 +63,7 @@
                     <a href="addProducto?id-producto=${producto.id}" class="link-comprar">
                         <span class="lector"><fmt:message key="addCarrito" bundle="${bundle}"/> ${producto.nombre}</span>
                         <div class="triangle"></div>
-                        <p class="icon-producto"><i class="fa fa-cart-plus"></i></p>
+                        <span class="icon-producto"><i class="fa fa-cart-plus"></i></span>
                     </a>
                 </div>
             </div>

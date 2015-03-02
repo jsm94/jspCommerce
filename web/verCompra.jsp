@@ -14,23 +14,24 @@
     <jsp:forward page="/index.jsp" />
 </c:if>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<fmt:message key="idioma" bundle="${bundle}"/>">
     <jsp:include page="bloques/head.jsp"/>
     <body>
 
         <jsp:include page="bloques/navbar.jsp" />
 
-        <div class="container-fluid">
+        <div class="container-fluid wrapper">
             <div class="container">
-                <h1><fmt:message key="tuCompra" bundle="${bundle}"/></h1>
+                <h1 class="no-border"><fmt:message key="tuCompra" bundle="${bundle}"/></h1>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <table class="table">
                         <thead>
-                        <th scolpe="col"><fmt:message key="producto" bundle="${bundle}"/></th>
-                        <th scolpe="col"><fmt:message key="cantidad" bundle="${bundle}"/></th>
-                        <th scolpe="col">Subtotal</th>
-                        <th scolpe="col"><fmt:message key="eliminar" bundle="${bundle}"/></th>
-                        </thead>
+                            <tr>
+                                <th scope="col" id="t-producto"><fmt:message key="producto" bundle="${bundle}"/></th>
+                                <th scope="col" id="t-cantidad"><fmt:message key="cantidad" bundle="${bundle}"/></th>
+                                <th scope="col" id="t-subtotal">Subtotal</th>
+                                <th scope="col" id="t-eliminar"><fmt:message key="eliminar" bundle="${bundle}"/></th>
+                            </tr>
                         <tbody>
                             <c:set var="lineas" value="${carrito.lineas}" />
                             <c:forEach var="linea" items="${lineas}">
@@ -39,31 +40,30 @@
                                 <jsp:setProperty name="lineaVenta" property="cantidad" value="${linea.cantidad}" />
                                 <jsp:setProperty name="lineaVenta" property="subTotal" value="${linea.subTotal}" />
                                 <tr>
-                                    <td scope="row">${lineaVenta.producto.nombre}</td>
-                                    <td>x${lineaVenta.cantidad}</td>
-                                    <td><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${lineaVenta.subTotal}" /></td>
-                                    <td><a href="remProducto?id-producto=${lineaVenta.producto.id}"><span class="lector"><fmt:message key="eliminar" bundle="${bundle}"/> ${lineaVenta.producto.nombre}</span><i class="fa fa-times"></i></a></td>
+                                    <td headers="t-producto">${lineaVenta.producto.nombre}</td>
+                                    <td headers="t-cantidad">x${lineaVenta.cantidad}</td>
+                                    <td headers="t-subtotal"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${lineaVenta.subTotal}" /></td>
+                                    <td headers="t-eliminar"><a href="remProducto?id-producto=${lineaVenta.producto.id}"><span class="lector"><fmt:message key="eliminar" bundle="${bundle}"/> ${lineaVenta.producto.nombre}</span><i class="fa fa-times"></i></a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
-                        <tfoot>
-                            <tr><td>&nbsp;</td></tr>
-                            <tr>
-                                <td></td>
-                                <th>Total</th>
-                                <td colspan="2"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${carrito.total()}" /></td>
-                            </tr>
-                        </tfoot>
                     </table>
+                    <div class="col-md-6 hidden-xs"></div>
+                    <div class="col-md-6 col-xs-12" style="margin-bottom: 20px">
+                        <div class="col-md-6 col-xs-3">
+                            <span class="titulo-total-ver-carrito">Total</span>
+                        </div>
+                        <div class="col-md-6 col-xs-9" style="text-align: right">
+                            <span class="precio-total"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${carrito.total()}" /></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <a href="realizarCompra.jsp"><button class="btn btn-golden"><fmt:message key="realizarCompra" bundle="${bundle}"/></button></a>
+                    <a href="realizarCompra.jsp"><span class="btn btn-golden"><fmt:message key="realizarCompra" bundle="${bundle}"/></span></a>
                 </div>
             </div>
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <jsp:include page="bloques/footer.jsp" />
     </body>
 </html>
 

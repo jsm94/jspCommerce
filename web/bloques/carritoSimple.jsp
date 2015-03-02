@@ -32,7 +32,7 @@
                             </p>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-4" style="display: table;height: 58px">
-                            <p style="display: table-cell;vertical-align: middle"><a href="verCompra.jsp"><button class="btn  btn-xs btn-golden"><fmt:message key="verCompra" bundle="${bundle}"/></button></a></p>
+                            <p style="display: table-cell;vertical-align: middle"><a href="verCompra.jsp"><span class="btn  btn-xs btn-golden"><fmt:message key="verCompra" bundle="${bundle}"/></span></a></p>
                         </div>
                     </div>
                 </div>

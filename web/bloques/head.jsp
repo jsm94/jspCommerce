@@ -10,7 +10,7 @@
     <meta name="description" content="E-commerce con tecnología jsp">
     <meta name="author" content="Juan Antonio Seco Merchán">
     <title>jspCommerce</title>
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="imagenes/shop_ico.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
