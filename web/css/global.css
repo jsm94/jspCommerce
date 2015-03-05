@@ -356,3 +356,7 @@ h3 {
     -webkit-filter: grayscale(1);
     filter: grayscale(100%);
 }
+
+a span {
+    color: #333
+}

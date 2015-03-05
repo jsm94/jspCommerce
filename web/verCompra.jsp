@@ -43,7 +43,7 @@
                                     <td headers="t-producto">${lineaVenta.producto.nombre}</td>
                                     <td headers="t-cantidad">x${lineaVenta.cantidad}</td>
                                     <td headers="t-subtotal"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${lineaVenta.subTotal}" /></td>
-                                    <td headers="t-eliminar"><a href="remProducto?id-producto=${lineaVenta.producto.id}"><span class="lector"><fmt:message key="eliminar" bundle="${bundle}"/> ${lineaVenta.producto.nombre}</span><i class="fa fa-times"></i></a></td>
+                                    <td headers="t-eliminar"><a href="remProducto?id-producto=${lineaVenta.producto.id}"><span class="lector"><fmt:message key="eliminar" bundle="${bundle}"/> ${lineaVenta.producto.nombre}</span><span class="fa fa-times"></span></a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

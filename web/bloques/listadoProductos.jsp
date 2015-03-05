@@ -63,7 +63,7 @@
                     <a href="addProducto?id-producto=${producto.id}" class="link-comprar">
                         <span class="lector"><fmt:message key="addCarrito" bundle="${bundle}"/> ${producto.nombre}</span>
                         <div class="triangle"></div>
-                        <span class="icon-producto"><i class="fa fa-cart-plus"></i></span>
+                        <span class="icon-producto"><span class="fa fa-cart-plus"></span></span>
                     </a>
                 </div>
             </div>

@@ -26,7 +26,7 @@
                         <div class="col-md-5 col-sm-4 hidden-xs"></div>
                         <div class="col-md-5 col-sm-6 col-xs-8" style="display: table;height: 58px">
                             <p style="display: table-cell;vertical-align: middle">
-                                <span><i class="fa fa-shopping-cart icono-compra"></i></span>
+                                <span><span class="fa fa-shopping-cart icono-compra"></span></span>
                                 <span>${lineas.size()} <fmt:message key="productosValor" bundle="${bundle}"/></span> 
                                 <span class="precio-compra"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${carrito.total()}" /></span>
                             </p>

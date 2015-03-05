@@ -10,7 +10,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12 footer">
         <div class="container">
             <div class="col-md-8 col-sm-8 col-xs-12">
-                <a href="https://github.com/jsm94/jspCommerce"><i class="fa fa-github"></i></a><span><fmt:message key="realizadoPor" bundle="${bundle}"/> <a href="https://github.com/jsm94">Juan Antonio Seco Merchán</a></span>
+                <a href="https://github.com/jsm94/jspCommerce"><span class="fa fa-github"></span><span class="lector"><fmt:message key="verGitHub" bundle="${bundle}"/></span></a><span><fmt:message key="realizadoPor" bundle="${bundle}"/> <a href="https://github.com/jsm94">Juan Antonio Seco Merchán</a></span>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <a href="http://www.w3.org/html/logo/">
