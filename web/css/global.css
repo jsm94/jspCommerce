@@ -360,3 +360,7 @@ h3 {
 a span {
     color: #333
 }
+
+span.fa.fa-cart-plus {
+  color: white;
+}

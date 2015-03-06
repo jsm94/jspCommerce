@@ -24,7 +24,8 @@
             <div class="container">
                 <h1 class="no-border"><fmt:message key="tuCompra" bundle="${bundle}"/></h1>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <table class="table">
+                    <table class="table"> <!-- Creamos una tabla para mostrar los productos del carrito -->
+                        <caption><fmt:message key="captionTabla" bundle="${bundle}"/></caption>
                         <thead>
                             <tr>
                                 <th scope="col" id="t-producto"><fmt:message key="producto" bundle="${bundle}"/></th>
@@ -34,7 +35,7 @@
                             </tr>
                         <tbody>
                             <c:set var="lineas" value="${carrito.lineas}" />
-                            <c:forEach var="linea" items="${lineas}">
+                            <c:forEach var="linea" items="${lineas}"> <!-- Recorremos los productos -->
                                 <jsp:useBean id="lineaVenta" class="beans.LineaVenta" />
                                 <jsp:setProperty name="lineaVenta" property="producto" value="${linea.producto}" />
                                 <jsp:setProperty name="lineaVenta" property="cantidad" value="${linea.cantidad}" />
@@ -53,12 +54,12 @@
                         <div class="col-md-6 col-xs-3">
                             <span class="titulo-total-ver-carrito">Total</span>
                         </div>
-                        <div class="col-md-6 col-xs-9" style="text-align: right">
+                        <div class="col-md-6 col-xs-9" style="text-align: right"> <!-- Precio total de la compra -->
                             <span class="precio-total"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${carrito.total()}" /></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12"> <!-- Botón de realizar la compra -->
                     <a href="realizarCompra.jsp"><span class="btn btn-golden"><fmt:message key="realizarCompra" bundle="${bundle}"/></span></a>
                 </div>
             </div>

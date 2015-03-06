@@ -19,6 +19,8 @@
     <body>
 
         <jsp:include page="bloques/navbar.jsp" />
+        
+        <!--Formulario para realizar la compra-->
 
         <div class="container-fluid wrapper">
             <div class="container">

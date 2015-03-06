@@ -73,16 +73,16 @@
                     <div class="capa"></div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container"> <!-- Bloque de carito -->
                 <jsp:include page="bloques/carritoSimple.jsp" />
             </div>
-            <div class="container contenido-vista-producto">
+            <div class="container contenido-vista-producto"> <!-- Vista del producto -->
                 <div class="row">
                     <div class="col-md-7">
-                        <h1><fmt:message key="descripcion" bundle="${bundle}"/></h1>
-                        <p id="descripcion-producto"><c:out value="${productoFinal.descripcion}" /></p>
+                        <h1><fmt:message key="descripcion" bundle="${bundle}"/></h1> <!-- Título del producto -->
+                        <p id="descripcion-producto"><c:out value="${productoFinal.descripcion}" /></p> <!-- Descripción del producto -->
 
-                        <div class="col-md-4 col-xs-12">
+                        <div class="col-md-4 col-xs-12"> <!-- Imágenes del producto -->
                             <img src="imagenes/productos/${productoFinal.imagen}" alt="<fmt:message key="imagenDe" bundle="${bundle}"/> ${productoFinal.nombre}" class="img-responsive">    
                         </div>
 
@@ -95,7 +95,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-3 detalle-vista-producto">
+                    <div class="col-md-3 detalle-vista-producto"> <!-- Detalles de precio y añadir al carrito -->
                         <h2><fmt:message key="precio" bundle="${bundle}"/></h2>
                         <p class="precio-producto no-margin"><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${productoFinal.precio}" /></p>
                         <a href="addProducto?id-producto=${productoFinal.id}">

@@ -20,15 +20,15 @@
         </div><!-- /input-group -->
     </form>
 </div><!-- /.col-lg-6 -->
-
+<%-- //Búsqueda de productos --%>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12  listado-productos">
         <c:choose>
-            <c:when test="${not empty param.nameCar}">
+            <c:when test="${not empty param.nameCar}"> <!-- Si el parámetro nameCar no está vacío, se realizará la búsqueda -->
                 <c:set var="listaProductos" value="${almacen.getProductosByName(param.nameCar)}" />
                 <h1><fmt:message key="resultadosPor" bundle="${bundle}" /> "${param.nameCar}"</h1>
                 <c:if test="${listaProductos.size() <= 0}">
-                    <p><fmt:message key="noResultados" bundle="${bundle}" /></p>
+                    <p><fmt:message key="noResultados" bundle="${bundle}" /></p> <!-- Si no se encuentran resultados se muestra este mensaje -->
                 </c:if>
             </c:when>
             <c:otherwise>
@@ -36,7 +36,7 @@
                 <h1><fmt:message key="ultimosProductos" bundle="${bundle}" /></h1>
             </c:otherwise>
         </c:choose>
-        <c:forEach var="i" items="${listaProductos}">
+        <c:forEach var="i" items="${listaProductos}"> <!-- Recorremos l a lista de productos y los mostramos -->
             <div class="col-md-3 col-sm-4 col-xs-12">
                 <%-- Declaramos el bean de producto y aplicamos sus propiedades --%>
                 <jsp:useBean  id="producto" class="beans.Producto" />
@@ -60,11 +60,13 @@
                     <c:set var="shortDesc" value="${fn:substring(producto.descripcion, 0, 32)}" /> 
                     <p class="descripcion-producto"><c:out value="${shortDesc}..." /> <a href="verProducto.jsp?id=${producto.id}"> <fmt:message key="verMas" bundle="${bundle}"/> ${producto.nombre}</a></p>
                     <p class="precio-producto"><span class="lector"><fmt:message key="precio" bundle="${bundle}"/> </span><fmt:formatNumber type="currency" currencySymbol="&euro;" value="${producto.precio}" /></p>
+                    <!--Botón interactivo para añadir productos al carrito-->
                     <a href="addProducto?id-producto=${producto.id}" class="link-comprar">
                         <span class="lector"><fmt:message key="addCarrito" bundle="${bundle}"/> ${producto.nombre}</span>
                         <div class="triangle"></div>
                         <span class="icon-producto"><span class="fa fa-cart-plus"></span></span>
                     </a>
+                    <!--//Botón interactivo para añadir productos al carrito-->
                 </div>
             </div>
         </c:forEach>
